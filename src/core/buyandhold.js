@@ -35,5 +35,5 @@ var plan = {
 plan.initialize(10000)
 runner.run(plan, function (err) {
   if(err) return console.log(err)
-  console.log(account.journal)
+  console.log
 })
