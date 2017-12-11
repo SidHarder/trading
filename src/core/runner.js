@@ -1,11 +1,11 @@
 var level = require('level')
-var db = level('./mydb')
+var db = level('leveldb')
 
 module.exports = {
     run: function (plan, callback) {
       db.createReadStream()
         .on('data', function (data) {
-          var d = new Date(0).setUTCSeconds(data.key)
+          var d = new Date(0).setUTCSeconds(data.key)          
           var ohlcv = JSON.parse(data.value)
           plan.run(ohlcv)
         })
@@ -17,7 +17,7 @@ module.exports = {
         })
         .on('end', function () {
           console.log('Stream ended')
-          plan.finalize(callback)          
+          plan.finalize(callback)
         })
     }
 }

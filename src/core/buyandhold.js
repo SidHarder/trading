@@ -17,7 +17,7 @@ var plan = {
 
     if(this.count == 1) {
       this.firstDate = d
-      var quantity = account.journal.currentBalance/ohlcv.open
+      var quantity = account.currentBalance/ohlcv.open
       var buy = trade.buy(quantity, ohlcv.open, ohlcv.date, account)
       this.trades.push(buy)
     }
@@ -35,5 +35,5 @@ var plan = {
 plan.initialize(10000)
 runner.run(plan, function (err) {
   if(err) return console.log(err)
-  console.log(account.currentBalance)
+  console.log(account.journal)
 })
